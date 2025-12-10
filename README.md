@@ -17,7 +17,6 @@ The ETL pipeline performs the following tasks:
 Project Structure:
 
 project/
-│
 ├── etl/
 │   ├── extracted_nasa.py
 │   ├── transformed_nasa.py
