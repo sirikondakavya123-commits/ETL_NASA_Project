@@ -17,18 +17,21 @@ The ETL pipeline performs the following tasks:
 Project Structure:
 
 project/
-│── etl/
+│
+├── etl/
 │   ├── extracted_nasa.py
 │   ├── transformed_nasa.py
 │   └── load_nasa.py
 │
-│── data/
+├── data/
 │   ├── raw/
 │   ├── images/
 │   └── staged/
 │
-│── README.md
-│── .env
+├── README.md
+├── requirements.txt
+└── .env
+
 
 ETL Pipeline Details
 1. Extract Phase
