@@ -8,14 +8,13 @@ Project Overview
 
 The ETL pipeline performs the following tasks:
 
-1.Extracts APOD metadata and downloads the image from the NASA APOD API.
+Extracts APOD metadata and downloads the image from the NASA APOD API.
 
-2.Transforms the raw JSON metadata into a structured CSV file.
+Transforms the raw JSON metadata into a structured CSV file.
 
-3.Loads the cleaned data into a Supabase table for storage and analysis.
+Loads the cleaned data into a Supabase table for storage and analysis.
 
-Project Structure:
-
+Project Structure
 project/
 ├── etl/
 │   ├── extracted_nasa.py
@@ -31,35 +30,30 @@ project/
 ├── requirements.txt
 └── .env
 
-
 ETL Pipeline Details
-1. Extract Phase
+Extract Phase
 
 Script: extracted_nasa.py
-Reference: 
 
 This script sends a request to the NASA APOD API, retrieves JSON metadata, and downloads the APOD image.
 The JSON file is stored in the data/raw/ directory, and the image is stored in data/images/.
 
-2. Transform Phase
+Transform Phase
 
 Script: transformed_nasa.py
-Reference: 
 
 This script reads the latest APOD JSON file, extracts relevant fields, and converts them into a structured CSV file.
 The final CSV output is stored in the data/staged/ directory.
 
-3. Load Phase
+Load Phase
 
 Script: load_nasa.py
-Reference: 
 
 This script reads the transformed CSV and uploads the data to a Supabase table.
-It performs data cleaning before insertion and inserts the records in batches.
+It performs data cleaning before insertion and uploads the records in batches.
 
 Setup Instructions
 Step 1: Install Required Libraries
-
 pip install -r requirements.txt
 
 Step 2: Configure Environment Variables
@@ -71,7 +65,7 @@ SUPABASE_URL=your_supabase_url
 SUPABASE_KEY=your_supabase_service_role_key
 
 Step 3: Run Each ETL Stage
-
+Extract
 python etl/extracted_nasa.py
 
 Transform
@@ -81,19 +75,16 @@ Load
 python etl/load_nasa.py
 
 Recommended Supabase Table Schema
-
-| Column          | Type                 |
-| --------------- | -------------------- |
-| id (optional)   | bigint (Primary Key) |
-| title           | text                 |
-| date            | date                 |
-| explanation     | text                 |
-| hdurl           | text                 |
-| url             | text                 |
-| copyright       | text                 |
-| media_type      | text                 |
-| service_version | text                 |
-
+Column	Type
+id (optional)	bigint (Primary Key)
+title	text
+date	date
+explanation	text
+hdurl	text
+url	text
+copyright	text
+media_type	text
+service_version	text
 Key Features
 
 Modular ETL design with separation of extract, transform, and load logic
